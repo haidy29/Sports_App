@@ -8,6 +8,6 @@ target 'Sports_App' do
   # Pods for Sports_App
 pod 'Kingfisher'
 pod 'ReachabilitySwift'
-pod 'lottie-ios'
+pod 'lottie-ios', '4.4.1'
 
 end
