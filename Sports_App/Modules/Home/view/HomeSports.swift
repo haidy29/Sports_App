@@ -12,15 +12,15 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     
     @IBOutlet weak var CollectioView: UICollectionView!
         
-    
-    
     var viewModel : HomeViewModelProtocol!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
        self.title =  "Sports"
-
         viewModel = HomeViewModel()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +40,8 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
+        self.navigationController?.pushViewController(LeaguesScreen, animated: true)
     }
     
     

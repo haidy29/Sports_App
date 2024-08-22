@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 
 protocol HomeViewModelProtocol{
     func getSportsCount() -> Int
@@ -25,4 +24,7 @@ class HomeViewModel: HomeViewModelProtocol{
     func getSportById(index: Int) -> sport{
         return sportsList[index]
     }
+    
+    
+   
 }
