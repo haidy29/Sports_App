@@ -14,6 +14,7 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     var leaguesViewModel :LeaguesViewModel!
+    var selectedIndex: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,7 +26,7 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
 
                }
 
-        leaguesViewModel.getsportdata()
+        leaguesViewModel.getsportdata(sportindex: selectedIndex)
 
     }
 

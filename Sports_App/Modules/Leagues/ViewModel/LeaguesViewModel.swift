@@ -8,8 +8,7 @@
 import Foundation
 
 protocol LeaguesViewModelProtocol{
-    func getsportdata()
-}
+    func getsportdata(sportindex: Int)}
 
 
 class LeaguesViewModel : LeaguesViewModelProtocol{
@@ -33,12 +32,12 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
         return sportdatalist.result[index]
     }
     
-    func getsportdata(){
-        nwService?.getDataforfootball { [weak self] Comingdata in
+    func getsportdata(sportindex: Int){
+        nwService?.getDataforfootball(sportindex: sportindex) { [weak self] Comingdata in
           
             DispatchQueue.main.async {
                
-                self?.sportdatalist = Comingdata
+                self?.sportdatalist = Comingdata!
                 self?.bindResultToViewController()
                 
             }

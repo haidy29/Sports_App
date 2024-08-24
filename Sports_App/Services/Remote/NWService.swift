@@ -7,13 +7,35 @@
 
 import Foundation
 protocol NWServiceprotocol{
-    func getDataforfootball(handler : @escaping (ApiResponse) -> Void)
+    func getDataforfootball(sportindex: Int, handler: @escaping (ApiResponse?) -> Void)
+    
 }
 class NWService: NWServiceprotocol{
     private var leagues: [League] = []
+    let urls = [
+            "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753",
+            "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753",
+            "https://apiv2.allsportsapi.com/tennis/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753",
 
-    func getDataforfootball(handler : @escaping (ApiResponse) -> Void){
-        let url = URL(string:"https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753")
+            "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753"
+
+        ]
+    
+    func getDataforfootball(sportindex: Int, handler: @escaping (ApiResponse?) -> Void){
+        var chosedUrl = " "
+        if (sportindex == 0){
+            chosedUrl = urls[0]
+        }
+        else if (sportindex == 1){
+            chosedUrl = urls[1]
+        }
+        else if (sportindex == 2){
+            chosedUrl = urls[2]
+        }
+        else if (sportindex == 3){
+            chosedUrl = urls[3]
+        }
+        let url = URL(string: chosedUrl)
         guard let url = url else{return}
         let request = URLRequest(url: url)
         let session = URLSession(configuration: URLSessionConfiguration.default)

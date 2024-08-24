@@ -18,12 +18,16 @@ class leaguesTableViewCell: UITableViewCell {
            //badge.layer.borderColor = UIColor.black.cgColor
         badge.layer.cornerRadius = badge.frame.height/2
         badge.clipsToBounds = true
+        
+        
+        
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+      
     }
     @IBAction func btnvideo(_ sender: Any) {
         DispatchQueue.main.async {
@@ -49,7 +53,7 @@ class leaguesTableViewCell: UITableViewCell {
                            guard let data = data, error == nil else {
                                // Handle error (e.g., show a placeholder image)
                                DispatchQueue.main.async {
-                                   self?.badge.image = UIImage(named: "placeholder_image")
+                                   self?.badge.image = UIImage(named: "default")
                                }
                                return
                            }
@@ -59,11 +63,11 @@ class leaguesTableViewCell: UITableViewCell {
                        }.resume()
                    } else {
                        // Handle case where logo is not a valid URL
-                       badge.image = UIImage(named: "placeholder_image")
+                       badge.image = UIImage(named: "default")
                    }
                } else {
                    // Handle case where leagueLogo is nil or empty
-                   badge.image = UIImage(named: "placeholder_image")
+                   badge.image = UIImage(named: "default")
                }
            }
        }
