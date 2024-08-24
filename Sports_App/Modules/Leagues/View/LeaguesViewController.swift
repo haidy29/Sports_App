@@ -45,6 +45,21 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
+                self?.leaguesViewModel.deletSportdetails(chosedindex: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            }))
+                   
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    
     func renderTableView() {
         tableView.reloadData()
     }

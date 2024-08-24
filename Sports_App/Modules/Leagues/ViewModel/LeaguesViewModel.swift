@@ -20,8 +20,8 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
    
     init(){
            nwService = NWService()
-        self.sportdatalist = defaultResponse
-       // sportdatalist
+        self.sportdatalist = ApiResponse(result: [])
+       
        }
     func getSportdetailsCount() -> Int{
         sportdatalist.result.count
@@ -31,7 +31,9 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
         //nwService = NWService()
         return sportdatalist.result[index]
     }
-    
+    func deletSportdetails(chosedindex: Int){
+        sportdatalist.result.remove(at: chosedindex)
+    }
     func getsportdata(sportindex: Int){
         nwService?.getDataforfootball(sportindex: sportindex) { [weak self] Comingdata in
           

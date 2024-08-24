@@ -30,7 +30,7 @@ struct League: Codable {
     }
 }
 
-let defaultResponse = ApiResponse(success: 0, result: [])
+//et defaultResponse = ApiResponse(success: 0, result: [])
 //class JSONNull: Codable, Hashable {
 //
 //    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
