@@ -18,6 +18,7 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        self.title =  "Leagues"
         leaguesViewModel = LeaguesViewModel()
         leaguesViewModel.bindResultToViewController = { [weak self] in
             self?.renderTableView()
@@ -36,10 +37,13 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)as! leaguesTableViewCell
         let showeditem = leaguesViewModel.getSportdetailsById(index: indexPath.row)
         cell.setupleaguesCell(data: showeditem)
+      
         return cell
 
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
+    }
     func renderTableView() {
         tableView.reloadData()
     }

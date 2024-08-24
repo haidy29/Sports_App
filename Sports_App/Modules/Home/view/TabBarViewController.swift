@@ -71,7 +71,7 @@ class TabBarViewController: UIViewController {
            addChild(navViewController)
            navViewController.view.frame = contentView.frame
            contentView.addSubview(navViewController.view)
-           navViewController.didMove(toParent: self)
+          navViewController.didMove(toParent: self)
            
            btnhome.setImage(UIImage(systemName: "house.fill"), for: .normal)
            btnhome.tintColor = .white
