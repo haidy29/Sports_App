@@ -16,7 +16,5 @@ class TitleCollectionViewCell: UICollectionViewCell {
         self.titleLbl.text = titleLbl
     }
     
-//    func cellSetup(data: Events?){
-//        titleLbl.text = data?.awayTeamLogo ?? ""
-//    }
+    
 }

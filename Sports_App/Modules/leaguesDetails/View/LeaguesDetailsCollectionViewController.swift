@@ -170,17 +170,19 @@ class LeaguesDetailsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let titleCell = collectionView.dequeueReusableCell(withReuseIdentifier: "titleCell", for: indexPath) as! TitleCollectionViewCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventscell", for: indexPath)
+        let eventcell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventscell", for: indexPath) as! UpComingCollectionViewCell
       // let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
        // let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath)
     
         // Configure the cell
         switch (indexPath.section){
         case 0:
-            titleCell.cellSetup(titleLbl: "Up")
+            titleCell.cellSetup(titleLbl: "Up Coming Events")
             return titleCell
         case 1:
-            return cell
+            eventcell.cellSetup(data: detailsViewModel.getEventsById(index: indexPath.row) )
+            print (detailsViewModel.getEventsById(index: indexPath.row))
+            return eventcell
 
         case 2:
             titleCell.cellSetup(titleLbl: "Leatest")

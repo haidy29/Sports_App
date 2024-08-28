@@ -41,34 +41,12 @@ class leaguesTableViewCell: UITableViewCell {
                     UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(str)"))!, options: [:], completionHandler: nil)
     }
 
-    func setupleaguesCell(data: League){
-        lbltitle.text = data.leagueName
-        //badge.image = UIImage(named: data.leagueLogo)
-        // Ensure that leagueLogo is not nil and is a valid URL or image name
-               if let logo = data.leagueLogo, !logo.isEmpty {
-                   if let url = URL(string: logo) {
-                       // Asynchronously load image from URL
-                       URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-                           guard let data = data, error == nil else {
-                               // Handle error (e.g., show a placeholder image)
-                               DispatchQueue.main.async {
-                                   self?.badge.image = UIImage(named: "default")
-                               }
-                               return
-                           }
-                           DispatchQueue.main.async {
-                               self?.badge.image = UIImage(data: data)
-                           }
-                       }.resume()
-                   } else {
-                       // Handle case where logo is not a valid URL
-                       badge.image = UIImage(named: "default")
-                   }
-               } else {
-                   // Handle case where leagueLogo is nil or empty
-                   badge.image = UIImage(named: "default")
-               }
-           }
+   func setupleaguesCell(data: League){
+       lbltitle.text = data.leagueName
+      badge.setImage(data.leagueLogo ?? "", placeholder: "default")
+        
+        
+          }
        }
     
 
