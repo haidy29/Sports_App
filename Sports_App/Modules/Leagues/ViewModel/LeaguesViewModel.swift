@@ -8,37 +8,47 @@
 import Foundation
 
 protocol LeaguesViewModelProtocol{
-    func getsportdata(sportindex: Int)}
+    var bindResultToViewController :(() -> ()) { get set }
+    
+    func getsportdata(sportindex: Int)
+    func getSportdetailsById(index: Int) -> League
+    func getSportdetailsCount() -> Int
+    func deletSportdetails(chosedindex: Int)
+    func getLeagueId(index: Int) -> Int 
+}
 
 
 class LeaguesViewModel : LeaguesViewModelProtocol{
-   
-   
+    
+    
     var nwService : NWServiceprotocol?
     var bindResultToViewController :(() -> ()) = {}
     var sportdatalist : ApiResponse
-   
+    
     init(){
-           nwService = NWService()
+        nwService = NWService()
         self.sportdatalist = ApiResponse(result: [])
-       
-       }
+        
+    }
     func getSportdetailsCount() -> Int{
         sportdatalist.result.count
     }
-
+    
     func getSportdetailsById(index: Int) -> League{
-        //nwService = NWService()
+        
         return sportdatalist.result[index]
     }
     func deletSportdetails(chosedindex: Int){
         sportdatalist.result.remove(at: chosedindex)
     }
+    func getLeagueId(index: Int) -> Int {
+        sportdatalist.result[index].leagueKey ?? 0
+    }
     func getsportdata(sportindex: Int){
         nwService?.getDataforfootball(sportindex: sportindex) { [weak self] Comingdata in
-          
+            
             DispatchQueue.main.async {
-               
+                
                 self?.sportdatalist = Comingdata!
                 self?.bindResultToViewController()
                 

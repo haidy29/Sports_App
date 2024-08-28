@@ -13,7 +13,7 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
    
 
     @IBOutlet weak var tableView: UITableView!
-    var leaguesViewModel :LeaguesViewModel!
+    var leaguesViewModel :LeaguesViewModelProtocol!
     var selectedIndex: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +38,11 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)as! leaguesTableViewCell
         let showeditem = leaguesViewModel.getSportdetailsById(index: indexPath.row)
         cell.setupleaguesCell(data: showeditem)
-      
-        return cell
-
+              return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        100
+//    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
@@ -58,8 +56,13 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
             self.present(alert, animated: true, completion: nil)
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let LeaguesDetails = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesDetails") as! LeaguesDetailsCollectionViewController
+        LeaguesDetails.leaduesId = leaguesViewModel.getLeagueId(index: indexPath.row)
+        LeaguesDetails.sportIndex = selectedIndex
+        self.navigationController?.pushViewController(LeaguesDetails, animated: true)
+    }
 
-    
     func renderTableView() {
         tableView.reloadData()
     }

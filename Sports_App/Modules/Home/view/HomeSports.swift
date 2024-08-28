@@ -9,11 +9,10 @@ import UIKit
 
 class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
     
-    
     @IBOutlet weak var CollectioView: UICollectionView!
         
     var viewModel : HomeViewModelProtocol!
-    
+    var legSelected: ((_ selectedIndex: Int)->())?
    
     
     override func viewDidLoad() {
@@ -36,13 +35,15 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sportcell", for: indexPath) as! HomeCell
         cell.setupCell(data: viewModel.getSportById(index: indexPath.row))
         return cell
+
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
-        LeaguesScreen.selectedIndex = indexPath.row
-        self.navigationController?.pushViewController(LeaguesScreen, animated: true)
+       // let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
+       // LeaguesScreen.selectedIndex = indexPath.row
+// self.navigationController?.pushViewController(LeaguesScreen, animated: true)
+        legSelected?(indexPath.row)
 
     }
     

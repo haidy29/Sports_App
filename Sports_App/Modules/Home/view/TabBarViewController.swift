@@ -40,13 +40,19 @@ class TabBarViewController: UIViewController {
       navViewController.view.frame = contentView.frame
       contentView.addSubview(navViewController.view)
       navViewController.didMove(toParent: self)
+      
+      homescreen.legSelected = { [weak self] index in
+         let LeaguesScreen = self?.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
+         LeaguesScreen.selectedIndex = index
+         self?.navigationController?.pushViewController(LeaguesScreen, animated: true)
+      }
 }
     @IBAction func onclickTabbar(_ sender: UIButton) {
         let tag = sender.tag
        
         if tag == 2 {
             
-           guard let favscreen = self.storyboard?.instantiateViewController(identifier: "FavoriteViewController") as? FavoriteViewController else{ return }
+           guard let favscreen = self.storyboard?.instantiateViewController(identifier: "FavouriteViewController") as? FavouriteViewController else{ return }
            let navViewController = UINavigationController(rootViewController: favscreen)
 
            addChild(navViewController)
@@ -76,6 +82,12 @@ class TabBarViewController: UIViewController {
            btnhome.setImage(UIImage(systemName: "house.fill"), for: .normal)
            btnhome.tintColor = .white
            btnfav.tintColor = .gray
+           
+           homescreen.legSelected = { [weak self] index in
+              let LeaguesScreen = self?.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
+              LeaguesScreen.selectedIndex = index
+              self?.navigationController?.pushViewController(LeaguesScreen, animated: true)
+           }
         }
         
     }

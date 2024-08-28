@@ -11,16 +11,15 @@ class leaguesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var badge: UIImageView!
     @IBOutlet weak var lbltitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         //badge.layer.borderWidth = 1
         badge.layer.masksToBounds = false
            //badge.layer.borderColor = UIColor.black.cgColor
-        badge.layer.cornerRadius = badge.frame.height/2
+        badge.layer.cornerRadius = badge.frame.height / 2
         badge.clipsToBounds = true
-        
-        
-        
+         
        
     }
 
