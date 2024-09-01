@@ -1,24 +1,23 @@
 //
-//  DetailsNWServices.swift
+//  TeamsNWService.swift
 //  Sports_App
 //
-//  Created by Sohila Ahmed on 27/08/2024.
+//  Created by Sohila Ahmed on 30/08/2024.
 //
 
-
 import Foundation
-protocol DetailsNWServiceprotocol{
-    func getUpComingEvents(sportindex: Int, leagueId: String, handler: @escaping (EventsResponse?) -> Void)
+protocol TeamsNWServiceprotocol{
+    func getTeams(sportindex: Int, team_Key: String, handler: @escaping (TeamResponse?) -> Void)
     
 }
-class DetailsNWService: DetailsNWServiceprotocol{
-    private var events: [Events] = []
+class TeamsNWService: TeamsNWServiceprotocol{
+    private var teamlist: [Team] = []
 
-    func getUpComingEvents(sportindex: Int, leagueId: String, handler: @escaping (EventsResponse?) -> Void){
+    func getTeams(sportindex: Int, team_Key: String, handler: @escaping (TeamResponse?) -> Void){
         var chosedUrl = " "
         if (sportindex == 0){
-            chosedUrl = URLs.Instance.footballUpComingEvents(leagueId: leagueId)
-           
+            chosedUrl = URLsTeam.Instance.footballTeams(team_Key: team_Key)
+           print(chosedUrl)
         }
         else if (sportindex == 1){
            
@@ -39,8 +38,8 @@ class DetailsNWService: DetailsNWServiceprotocol{
                 return
             }
             do{
-                let comingData = try JSONDecoder().decode(EventsResponse.self, from: data)
-                self.events = comingData.result ?? [Events()]
+                let comingData = try JSONDecoder().decode(TeamResponse.self, from: data)
+                self.teamlist = comingData.result ?? [Team()]
                 handler(comingData)
                 
             }catch{
@@ -59,14 +58,13 @@ class DetailsNWService: DetailsNWServiceprotocol{
 
 
 
-class URLs {
-    static let Instance = URLs()
+class URLsTeam {
+    static let Instance = URLsTeam()
     
     private init() {}
     
-    func footballUpComingEvents(leagueId: String) -> String {
-       return "https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=\(leagueId)&from=2023-01-18&to=2024-01-18&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753"
-    }
      
-    
+    func footballTeams(team_Key: String) -> String {
+       return "https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=\(team_Key)&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753"
+    }
 }

@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6E7E3560-708D-46D9-A216-1CE0D364817B"
+            uuid = "788F1AE5-BB1F-43BB-B6C9-FAD91C9DA327"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sports_App/Modules/leaguesDetails/ViewModel/DetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "getEventsById(index:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "getEventdata(sportindex:leagueId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
