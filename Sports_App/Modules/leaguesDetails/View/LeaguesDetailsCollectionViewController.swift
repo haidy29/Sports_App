@@ -14,18 +14,30 @@ class LeaguesDetailsCollectionViewController: UICollectionViewController {
     
     var detailsViewModel :DetailsViewModelProtocol!
    
+    @IBOutlet weak var favbtn: UIBarButtonItem!
     var leaduesId : Int = 0
     var sportIndex : Int = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         detailsViewModel = DetailsViewModel()
-       
+       // detailsViewModel.setSportIndex(sportIndex: sportIndex)
         detailsViewModel.bindResultToCollectionController = { [weak self] in
+            
             self?.renderCollectionView()
+        }
+        
+//        detailsViewModel.bindImgForFavBtn = { [weak self] isFavorite in
+//                    guard let self = self else { return }
+//                    let imageName = isFavorite ? "star.fill" : "star"
+//                    self.setImageBtn (imgName : imageName)
+//                }
+          
+        updateFavoriteButton()
 
-               }
-
+       
         let  layout = UICollectionViewCompositionalLayout(){
             indexPath , enviroment in
             switch indexPath {
@@ -52,7 +64,22 @@ class LeaguesDetailsCollectionViewController: UICollectionViewController {
         collectionView.setCollectionViewLayout(layout, animated: true)
         // Do any additional setup after loading the view.
     }
-    
+    func setImageBtn (imgName : String ){
+        let starImage = UIImage(systemName: imgName)
+
+        let favButton = UIBarButtonItem(image: starImage, style: .plain, target: self, action: #selector(favaction))
+        favButton.tintColor = UIColor.red
+        self.navigationItem.rightBarButtonItem = favButton
+    }
+ func   updateFavoriteButton(){
+     let imageName = detailsViewModel.setFavbtnimg(Id: leaduesId) ? "star.fill" : "star"
+     let starImage = UIImage(systemName: imageName)
+
+     let favButton = UIBarButtonItem(image: starImage, style: .plain, target: self, action: #selector(favaction))
+     favButton.tintColor = UIColor.red
+     self.navigationItem.rightBarButtonItem = favButton
+    }
+
     func drawTitleSection()-> NSCollectionLayoutSection{
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         
@@ -198,7 +225,7 @@ class LeaguesDetailsCollectionViewController: UICollectionViewController {
             return titleCell
         case 5:
             Teamscell.cellSetup(data: detailsViewModel.getEventsById(index: indexPath.row))
-            Teamscell.layer.cornerRadius = eventcell.bounds.size.height / 4
+            Teamscell.layer.cornerRadius = Teamscell.bounds.size.height / 4
             Teamscell.layer.masksToBounds=true
             return Teamscell
         default:
@@ -215,7 +242,16 @@ class LeaguesDetailsCollectionViewController: UICollectionViewController {
        collectionView.reloadData()
     }
     
+    @IBAction func favaction(_ sender: Any) {
+        if detailsViewModel.getDataAppearState() {
+            detailsViewModel.taponfavbtn()
+            updateFavoriteButton()
         
+        }else{
+            print("Not responce")
+        }
+    }
+    
     }
 
     

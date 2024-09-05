@@ -15,6 +15,9 @@ class TabBarViewController: UIViewController {
    @IBOutlet weak var imghome: UIImageView!
    @IBOutlet weak var btnfav: UIButton!
    @IBOutlet weak var viewfottab: UIView!
+   
+
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       designableTabBar()
@@ -63,7 +66,13 @@ class TabBarViewController: UIViewController {
            btnfav.tintColor = .white
            btnhome.tintColor = .gray
            imghome.tintColor = .gray
-           
+           favscreen.legSelected = { [weak self] index in
+              let LeaguesDetailsScreen = self?.storyboard?.instantiateViewController(withIdentifier: "LeaguesDetails") as! LeaguesDetailsCollectionViewController
+              LeaguesDetailsScreen.leaduesId = favscreen.favViewModel.getLeagueId(index: index)
+          
+              self?.navigationController?.pushViewController(LeaguesDetailsScreen, animated: true)
+              
+           }
            
         }
         
@@ -93,5 +102,3 @@ class TabBarViewController: UIViewController {
     }
    
 }
-
-//

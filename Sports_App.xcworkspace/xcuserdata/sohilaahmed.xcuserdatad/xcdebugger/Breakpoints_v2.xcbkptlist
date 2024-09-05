@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "788F1AE5-BB1F-43BB-B6C9-FAD91C9DA327"
-            shouldBeEnabled = "Yes"
+            uuid = "3B9BAEC6-2888-4731-8705-B2F94227D4CE"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sports_App/Modules/leaguesDetails/ViewModel/DetailsViewModel.swift"
+            filePath = "Sports_App/Modules/leaguesDetails/View/LeaguesDetailsCollectionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "getEventdata(sportindex:leagueId:)"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "updateFavoriteButton()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F64D4457-329A-45B1-B0A1-A7720F3DAD2D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sports_App/Modules/Favourite/viewModel/FavViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getLeagueId(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -14,7 +14,7 @@ protocol LeaguesViewModelProtocol{
     func getSportdetailsById(index: Int) -> League
     func getSportdetailsCount() -> Int
     func deletSportdetails(chosedindex: Int)
-    func getLeagueId(index: Int) -> Int 
+    func getLeagueId(index: Int) -> Int
 }
 
 
@@ -24,7 +24,8 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
     var nwService : NWServiceprotocol?
     var bindResultToViewController :(() -> ()) = {}
     var sportdatalist : ApiResponse
-    
+ 
+
     init(){
         nwService = NWService()
         self.sportdatalist = ApiResponse(result: [])
@@ -44,6 +45,7 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
     func getLeagueId(index: Int) -> Int {
         sportdatalist.result[index].leagueKey ?? 0
     }
+    
     func getsportdata(sportindex: Int){
         nwService?.getDataforfootball(sportindex: sportindex) { [weak self] Comingdata in
             

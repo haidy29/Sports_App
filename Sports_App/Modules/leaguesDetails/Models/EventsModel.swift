@@ -30,7 +30,8 @@ struct Events: Codable {
     var leagueRound: String?
     var leagueSeason: String?
     var eventLive, eventStadium, eventReferee: String?
-    var homeTeamLogo, awayTeamLogo: String?
+    var homeTeamLogo, awayTeamLogo , leagueLogo: String?
+   // var sportsIndex: Int?
 
     enum CodingKeys: String, CodingKey {
         case eventKey = "event_key"
@@ -55,6 +56,8 @@ struct Events: Codable {
         case eventReferee = "event_referee"
         case homeTeamLogo = "home_team_logo"
         case awayTeamLogo = "away_team_logo"
+        case leagueLogo = "league_logo"
+       // case sportsIndex
 
     }
 }
