@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Network
 
 protocol DetailsViewModelProtocol{
     var bindResultToCollectionController :(() -> ()) { get set }
@@ -18,10 +19,12 @@ protocol DetailsViewModelProtocol{
     func getLatestaResultById(index: Int) -> Latest
     func setFavbtnimg(Id: Int) -> Bool
     func taponfavbtn()
-    var bindImgForFavBtn: ((_ state: Bool) -> Void){ get set }
+    //var bindImgForFavBtn: ((_ state: Bool) -> Void){ get set }
     func getDataAppearState()->Bool
     func setFavState(state: Bool)
    // func setSportIndex(sportIndex: Int)
+    var bindAlertNWToViewController :(() -> ()) { get set }
+    func setupNetworkMonitoring()
 }
 
 class DetailsViewModel : DetailsViewModelProtocol {
@@ -37,6 +40,8 @@ class DetailsViewModel : DetailsViewModelProtocol {
     var favState = false
     var isDataAppear = false
     var sportIndex = 0
+    private var monitor : NWPathMonitor?
+    var bindAlertNWToViewController :(() -> ()) = {}
 
     init(){
         nwService = DetailsNWService()
@@ -152,4 +157,20 @@ class DetailsViewModel : DetailsViewModelProtocol {
             }
         }
     }
+    func setupNetworkMonitoring() {
+          monitor = NWPathMonitor()
+          
+          monitor?.pathUpdateHandler = { [weak self] path in
+              DispatchQueue.main.async {
+                  if path.status == .satisfied {
+                      print("Internet is available")
+                      
+                  } else {
+                      print("No internet connection")
+                      self?.bindAlertNWToViewController()
+                  }
+              }
+          }
+          monitor?.start(queue:.main)
+      }
 }

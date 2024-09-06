@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Network
 protocol LeaguesViewModelProtocol{
     var bindResultToViewController :(() -> ()) { get set }
     
@@ -15,17 +15,18 @@ protocol LeaguesViewModelProtocol{
     func getSportdetailsCount() -> Int
     func deletSportdetails(chosedindex: Int)
     func getLeagueId(index: Int) -> Int
+   
+
 }
 
 
 class LeaguesViewModel : LeaguesViewModelProtocol{
     
-    
+   
     var nwService : NWServiceprotocol?
     var bindResultToViewController :(() -> ()) = {}
     var sportdatalist : ApiResponse
- 
-
+    
     init(){
         nwService = NWService()
         self.sportdatalist = ApiResponse(result: [])
@@ -57,4 +58,6 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
             }
         }
     }
+  
+   
 }

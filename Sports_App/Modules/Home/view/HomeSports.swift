@@ -11,20 +11,25 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     
     @IBOutlet weak var CollectioView: UICollectionView!
         
+   
     var viewModel : HomeViewModelProtocol!
     var legSelected: ((_ selectedIndex: Int)->())?
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.title =  "Sports"
+        self.title =  "Sports"
         viewModel = HomeViewModel()
-       
+        viewModel.setupNetworkMonitoring()
+        viewModel.bindAlertNWToViewController = { [weak self] in
+            self?.showNoInternetAlert()
+            self?.CollectioView.isHidden = true
+           
+        }
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -34,6 +39,8 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sportcell", for: indexPath) as! HomeCell
         cell.setupCell(data: viewModel.getSportById(index: indexPath.row))
+        cell.layer.cornerRadius = cell.bounds.size.height / 6
+        cell.layer.masksToBounds=true
         return cell
 
         
@@ -43,24 +50,36 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
        // let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
        // LeaguesScreen.selectedIndex = indexPath.row
 // self.navigationController?.pushViewController(LeaguesScreen, animated: true)
+       
         legSelected?(indexPath.row)
 
     }
     
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 1    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 2
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (collectionView.frame.width / 2) - 20 ,
+        CGSize(width: (collectionView.frame.width / 2) - 15 ,
                height: (collectionView.frame.height / 2) - 140)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 50, left: 10, bottom: 20, right: 10)
     }
+   
+    func showNoInternetAlert() {
+        let alert = UIAlertController(title: "No Internet Connection!!",
+                                      message: "Please check your internet connection and try again.",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

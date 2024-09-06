@@ -17,17 +17,21 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
     var selectedIndex: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         tableView.dataSource = self
         tableView.delegate = self
         self.title =  "Leagues"
         leaguesViewModel = LeaguesViewModel()
         leaguesViewModel.bindResultToViewController = { [weak self] in
             self?.renderTableView()
-
-               }
-
+        }
+          
         leaguesViewModel.getsportdata(sportindex: selectedIndex)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,6 +73,6 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
     func renderTableView() {
         tableView.reloadData()
     }
-
+    
 }
 
