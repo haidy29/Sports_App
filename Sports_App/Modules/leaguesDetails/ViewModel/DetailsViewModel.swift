@@ -34,14 +34,15 @@ class DetailsViewModel : DetailsViewModelProtocol {
     var nwTeamService : TeamsNWServiceprotocol?
    var bindResultToCollectionController :(() -> ()) = {}
     var bindImgForFavBtn: ((_ state: Bool) -> Void) = {_ in }
+    private var monitor : NWPathMonitor?
+    var bindAlertNWToViewController :(() -> ()) = {}
     var eventdatalist : EventsResponse
     var latestresult : LatestResponse
     var teamdatalist: TeamResponse
     var favState = false
     var isDataAppear = false
     var sportIndex = 0
-    private var monitor : NWPathMonitor?
-    var bindAlertNWToViewController :(() -> ()) = {}
+    
 
     init(){
         nwService = DetailsNWService()
@@ -118,6 +119,7 @@ class DetailsViewModel : DetailsViewModelProtocol {
         nwService?.getUpComingEvents(sportindex: sportindex, leagueId: "\(leagueId)") { [weak self] Comingdata in
             self?.eventdatalist = Comingdata  ?? EventsResponse()
             self?.setDataAppear(state: true)
+           
             DispatchQueue.main.async {
 
                 self?.bindResultToCollectionController()
@@ -158,19 +160,21 @@ class DetailsViewModel : DetailsViewModelProtocol {
         }
     }
     func setupNetworkMonitoring() {
-          monitor = NWPathMonitor()
-          
-          monitor?.pathUpdateHandler = { [weak self] path in
-              DispatchQueue.main.async {
-                  if path.status == .satisfied {
-                      print("Internet is available")
-                      
-                  } else {
-                      print("No internet connection")
-                      self?.bindAlertNWToViewController()
-                  }
-              }
-          }
-          monitor?.start(queue:.main)
-      }
+             monitor = NWPathMonitor()
+             
+             monitor?.pathUpdateHandler = { [weak self] path in
+                 DispatchQueue.main.async {
+                     if path.status == .satisfied {
+                         print("Internet is available")
+                    
+                     } else {
+                         print("No internet connection")
+                         self?.bindAlertNWToViewController()
+                     }
+                 }
+             }
+             monitor?.start(queue:.main)
+       
+         }
+   
 }

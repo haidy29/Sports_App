@@ -6,17 +6,21 @@
 //
 
 import Foundation
+
 protocol FavViewModelProtocol{
     func getFavDataFromCpreData()
     func getCount() -> Int
     func getFavdetailsById(index: Int) -> Events
     func getLeagueId(index: Int) -> Int
     func deletSportdetails(chosedindex: Int)
+    var legSelected: ((_ selectedIndex: Int)->()){ get set }
 }
 class FavViewModel : FavViewModelProtocol{
     var favsList: [Events] = []
     var favState = false
-
+   
+    
+    var legSelected: ((_ selectedIndex: Int)->()) =  { _ in }
     func getFavDataFromCpreData(){
         favsList = CoreDataManager.fetchFavFromCoreData()
         
@@ -40,4 +44,5 @@ class FavViewModel : FavViewModelProtocol{
         CoreDataManager.deleteFromFavCoreData(selectedId: favsList[chosedindex].leagueKey ?? 0 )
         favsList = CoreDataManager.fetchFavFromCoreData()
     }
+    
 }

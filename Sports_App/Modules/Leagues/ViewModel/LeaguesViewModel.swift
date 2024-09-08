@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Network
+
 protocol LeaguesViewModelProtocol{
     var bindResultToViewController :(() -> ()) { get set }
     

@@ -29,13 +29,13 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
         super.viewDidLoad()
         
         detailsViewModel = DetailsViewModel()
-        // detailsViewModel.setSportIndex(sportIndex: sportIndex)
+      // detailsViewModel.setSportIndex(sportIndex: sportIndex)
         detailsViewModel.setupNetworkMonitoring()
         detailsViewModel.bindAlertNWToViewController = { [weak self] in
             self?.showNoInternetAlert()
             self?.collectionView.isHidden = true
             self?.navigationItem.rightBarButtonItem?.isHidden = true
-            
+
         }
         
         detailsViewModel.bindResultToCollectionController = { [weak self] in
@@ -277,7 +277,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
         
         self.present(alert, animated: true, completion: nil)
     }
-    
+   
 }
 extension UIColor {
     convenience init(hex: String) {

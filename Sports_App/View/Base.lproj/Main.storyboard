@@ -19,7 +19,27 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jx6-Ly-LB6">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOU-iL-P9z">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCo-Lm-Adq">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="aOU-iL-P9z" firstAttribute="top" secondItem="Jx6-Ly-LB6" secondAttribute="top" id="1a1-R1-xLc"/>
+                                    <constraint firstAttribute="bottom" secondItem="aOU-iL-P9z" secondAttribute="bottom" id="Gbf-pe-NdY"/>
+                                    <constraint firstItem="yCo-Lm-Adq" firstAttribute="top" secondItem="Jx6-Ly-LB6" secondAttribute="top" id="HtN-iV-lRF"/>
+                                    <constraint firstAttribute="bottom" secondItem="yCo-Lm-Adq" secondAttribute="bottom" id="QpX-ZD-Q0E"/>
+                                    <constraint firstItem="yCo-Lm-Adq" firstAttribute="leading" secondItem="Jx6-Ly-LB6" secondAttribute="leading" id="Tr7-L5-LX7"/>
+                                    <constraint firstItem="aOU-iL-P9z" firstAttribute="leading" secondItem="Jx6-Ly-LB6" secondAttribute="leading" id="e4f-G4-pha"/>
+                                    <constraint firstAttribute="trailing" secondItem="aOU-iL-P9z" secondAttribute="trailing" id="gGN-6G-KXs"/>
+                                    <constraint firstAttribute="trailing" secondItem="yCo-Lm-Adq" secondAttribute="trailing" id="vJS-ml-mhC"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqF-sN-y0O" userLabel="TabBarView">
                                 <rect key="frame" x="30" y="698" width="333" height="80"/>
@@ -109,7 +129,9 @@
                         <outlet property="btnfav" destination="ySu-4R-zUZ" id="P2w-oY-gPD"/>
                         <outlet property="btnhome" destination="sep-ov-7dJ" id="Uzw-qJ-BnB"/>
                         <outlet property="contentView" destination="Jx6-Ly-LB6" id="kkj-64-g7M"/>
+                        <outlet property="favView" destination="yCo-Lm-Adq" id="bVA-9o-Rwi"/>
                         <outlet property="imghome" destination="xf5-xq-tBW" id="Lm1-wY-LfC"/>
+                        <outlet property="sportsView" destination="aOU-iL-P9z" id="JqJ-kf-JNl"/>
                         <outlet property="viewfottab" destination="sqF-sN-y0O" id="KqN-E9-G9w"/>
                     </connections>
                 </viewController>
@@ -210,9 +232,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-internet" translatesAutoresizingMaskIntoConstraints="NO" id="yKh-5Z-CcA">
-                                        <rect key="frame" x="20" y="225.66666666666663" width="353" height="426"/>
-                                    </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-H5-hlv">
                                         <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -290,15 +309,10 @@
                                 <viewLayoutGuide key="safeArea" id="Xzh-g0-qaB"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="yKh-5Z-CcA" firstAttribute="height" secondItem="Gjc-WI-Qcb" secondAttribute="height" multiplier="0.5" id="3pc-EY-cLM"/>
-                                    <constraint firstItem="yKh-5Z-CcA" firstAttribute="centerX" secondItem="Xzh-g0-qaB" secondAttribute="centerX" id="QZb-MM-fHi"/>
                                     <constraint firstItem="Eh8-H5-hlv" firstAttribute="trailing" secondItem="Xzh-g0-qaB" secondAttribute="trailing" id="Srb-Uj-H7k"/>
-                                    <constraint firstItem="yKh-5Z-CcA" firstAttribute="leading" secondItem="Xzh-g0-qaB" secondAttribute="leading" constant="20" id="TmM-3a-FTv"/>
                                     <constraint firstItem="Eh8-H5-hlv" firstAttribute="bottom" secondItem="Xzh-g0-qaB" secondAttribute="bottom" id="ena-4x-JWv"/>
                                     <constraint firstItem="Eh8-H5-hlv" firstAttribute="leading" secondItem="Xzh-g0-qaB" secondAttribute="leading" id="jjc-SS-jNP"/>
-                                    <constraint firstItem="Xzh-g0-qaB" firstAttribute="trailing" secondItem="yKh-5Z-CcA" secondAttribute="trailing" constant="20" id="ka7-5L-Aeb"/>
                                     <constraint firstItem="Eh8-H5-hlv" firstAttribute="top" secondItem="Xzh-g0-qaB" secondAttribute="top" id="nkq-dn-5j7"/>
-                                    <constraint firstItem="yKh-5Z-CcA" firstAttribute="centerY" secondItem="Xzh-g0-qaB" secondAttribute="centerY" id="y5A-5H-vks"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -994,7 +1008,6 @@
     </scenes>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="no-internet" width="512" height="512"/>
         <image name="no-signal" width="512" height="512"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

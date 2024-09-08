@@ -11,7 +11,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate, UITableVi
     
     
     @IBOutlet weak var tableView: UITableView!
-    var legSelected: ((_ selectedIndex: Int)->())?
+    
 
     var favViewModel : FavViewModelProtocol = FavViewModel()
     //var leaguesViewModel :LeaguesViewModelProtocol = LeaguesViewModel()
@@ -23,6 +23,8 @@ class FavouriteViewController: UIViewController , UITableViewDelegate, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         self.title =  "Favourites"
+       
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,10 +69,12 @@ class FavouriteViewController: UIViewController , UITableViewDelegate, UITableVi
      //  LeaguesDetails.leaduesId = favViewModel.getLeagueId(index: indexPath.row)
 //
  //       self.navigationController?.pushViewController(LeaguesDetails, animated: true)
-        legSelected?(indexPath.row)
+        favViewModel.legSelected(indexPath.row)
+        //favViewModel.setupNetworkMonitoring(index: indexPath.row)
     }
 
     func renderTableView() {
         tableView.reloadData()
     }
+   
 }

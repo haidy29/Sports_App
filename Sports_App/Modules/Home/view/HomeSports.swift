@@ -6,30 +6,25 @@
 //
 
 import UIKit
-
+import Network
 class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var CollectioView: UICollectionView!
         
-   
     var viewModel : HomeViewModelProtocol!
-    var legSelected: ((_ selectedIndex: Int)->())?
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title =  "Sports"
         viewModel = HomeViewModel()
-        viewModel.setupNetworkMonitoring()
-        viewModel.bindAlertNWToViewController = { [weak self] in
-            self?.showNoInternetAlert()
-            self?.CollectioView.isHidden = true
-           
-        }
+        
+        
+
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        // viewModel.setupNetworkMonitoring()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,12 +45,23 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
        // let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
        // LeaguesScreen.selectedIndex = indexPath.row
 // self.navigationController?.pushViewController(LeaguesScreen, animated: true)
-       
-        legSelected?(indexPath.row)
+//        viewModel.setupNetworkMonitoring(index: indexPath.row)
+        viewModel.setupNetworkMonitoring(index: indexPath.row)
 
+        viewModel.bindAlertNWToViewController = { [weak self] in
+                    self?.showNoInternetAlert()
+            
+                   // self?.CollectioView.isHidden = true
+        
+                }
+                viewModel.bindNavigationfromViewController = { [weak self] index in
+                    self?.viewModel.legSelected?(index)
+        
+                        }
     }
+
     
-    
+
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 //        return 1    }
@@ -71,8 +77,7 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 50, left: 10, bottom: 20, right: 10)
     }
-   
-    func showNoInternetAlert() {
+   func showNoInternetAlert() {
         let alert = UIAlertController(title: "No Internet Connection!!",
                                       message: "Please check your internet connection and try again.",
                                       preferredStyle: .alert)

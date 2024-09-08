@@ -65,6 +65,6 @@ class URLsTeam {
     
      
     func footballTeams(team_Key: String) -> String {
-       return "https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=\(team_Key)&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753"
+       return "https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=\(team_Key)&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
     }
 }

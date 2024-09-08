@@ -13,11 +13,11 @@ protocol NWServiceprotocol{
 class NWService: NWServiceprotocol{
     private var leagues: [League] = []
     let urls = [
-            "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753",
-            "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753",
-            "https://apiv2.allsportsapi.com/tennis/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753",
+            "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
+            "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
+            "https://apiv2.allsportsapi.com/tennis/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
 
-            "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=8793cf1600f025f13be7ef40838acbec2120412b85f38354687d8cb6053dd753"
+            "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
 
         ]
     
