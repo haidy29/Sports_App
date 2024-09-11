@@ -1,31 +1,23 @@
 //
-//  TeamsCollectionViewCell.swift
+//  TeamDetailsTableViewCell.swift
 //  Sports_App
 //
-//  Created by Sohila Ahmed on 01/09/2024.
+//  Created by Sohila Ahmed on 12/09/2024.
 //
 
 import UIKit
 
+class TeamDetailsTableViewCell: UITableViewCell {
 
-
-class TeamsCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var lblname: UILabel!
-   
-    
-    @IBOutlet weak var teambadge: UIImageView!
     override func awakeFromNib() {
             super.awakeFromNib()
-        setupCellAppearance()
-    
-
+            setupCellAppearance()
         }
         
         override func layoutSubviews() {
             super.layoutSubviews()
-            
-          self.layer.cornerRadius = self.bounds.size.height / 4
+            self.layer.cornerRadius = self.bounds.size.height / 6
+            self.layer.masksToBounds = false
             self.layer.borderWidth = 0.1
             self.layer.borderColor =  UIColor.gray.cgColor
             self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
@@ -37,14 +29,10 @@ class TeamsCollectionViewCell: UICollectionViewCell {
             self.layer.shadowRadius = 4
             self.layer.shadowOpacity = 0.3
             self.layer.masksToBounds = false
-           
+            
+            
+            self.layer.cornerRadius = 10
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor.gray.cgColor
         }
-    
-    func cellSetup(data: Events?){
-        lblname.text  = data?.eventHomeTeam ?? ""
-        teambadge.setImage(data?.homeTeamLogo ?? "", placeholder: "default")
-      
-        }
-
-}
-
+    }

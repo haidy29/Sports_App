@@ -230,8 +230,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
         case 3:
             
             lastestcell.cellSetup(data: detailsViewModel.getLatestaResultById(index: indexPath.row))
-            lastestcell.layer.cornerRadius = lastestcell.bounds.size.height / 4
-            lastestcell.layer.masksToBounds=true
+
             return lastestcell
             
         case 4:
@@ -239,8 +238,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
             return titleCell
         case 5:
             Teamscell.cellSetup(data: detailsViewModel.getEventsById(index: indexPath.row))
-            Teamscell.layer.cornerRadius = Teamscell.bounds.size.height / 4
-            Teamscell.layer.masksToBounds=true
+           
             return Teamscell
         default:
             return UICollectionViewCell()

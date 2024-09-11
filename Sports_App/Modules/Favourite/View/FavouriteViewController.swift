@@ -44,8 +44,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate, UITableVi
         let showeditem = favViewModel.getFavdetailsById(index: indexPath.row)
        // print(favViewModel.getFavdetailsById(index: indexPath.row))
         cell.setupleaguesCell(data: showeditem)
-        cell.layer.cornerRadius = cell.bounds.size.height / 4
-        cell.layer.masksToBounds=true
+
               return cell
     }
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

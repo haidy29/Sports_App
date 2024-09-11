@@ -23,6 +23,7 @@ class TeamDetailsTableViewController: UITableViewController {
         //teamimg.layer.borderColor = UIColor.black.cgColor
         teamimg.layer.cornerRadius = teamimg.frame.height / 2
         teamimg.clipsToBounds = true
+       
         teamViewModel = TeamDetailsViewModel()
         
         teamViewModel.bindResultToViewController = { [weak self]  Teamdata in
@@ -36,7 +37,7 @@ class TeamDetailsTableViewController: UITableViewController {
             if let players = Teamdata.first?.players {
                 let playerNames = players.compactMap { $0.playerName }
                 
-                let namesString = playerNames.joined(separator: "/ ")
+                let namesString = playerNames.joined(separator: "\n")
                 
                 self?.txtPlayers.text = namesString
             }
@@ -54,7 +55,7 @@ class TeamDetailsTableViewController: UITableViewController {
         
         return 3
     }
-    
+ 
     @IBAction func webaction(_ sender: Any) {
         
 //                    DispatchQueue.main.async {

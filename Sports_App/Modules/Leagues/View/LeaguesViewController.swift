@@ -42,8 +42,7 @@ class LeaguesViewController: UIViewController , UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)as! leaguesTableViewCell
         let showeditem = leaguesViewModel.getSportdetailsById(index: indexPath.row)
         cell.setupleaguesCell(data: showeditem)
-        cell.layer.cornerRadius = cell.bounds.size.height / 4
-        cell.layer.masksToBounds=true
+
               return cell
     }
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -34,8 +34,7 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sportcell", for: indexPath) as! HomeCell
         cell.setupCell(data: viewModel.getSportById(index: indexPath.row))
-        cell.layer.cornerRadius = cell.bounds.size.height / 6
-        cell.layer.masksToBounds=true
+      
         return cell
 
         
@@ -86,5 +85,6 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
         
         self.present(alert, animated: true, completion: nil)
     }
+   
     
 }
