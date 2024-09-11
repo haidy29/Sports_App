@@ -7,12 +7,15 @@
 
 import UIKit
 
+
+
 class TeamsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var lblname: UILabel!
    
     
     @IBOutlet weak var teambadge: UIImageView!
+
     
     func cellSetup(data: Events?){
         lblname.text  = data?.eventHomeTeam ?? ""

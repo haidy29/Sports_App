@@ -145,33 +145,3 @@ struct Goalscorer: Codable {
         case infoTime = "info_time"
     }
 }
-//struct Team:Decodable{
-//    var team_key: Int?
-//    var team_name: String?
-//    var team_logo: String?
-//}
-//struct TeamResponse:Decodable{
-//    var success:Int?
-//    var result:[Team]?
-//}
-
-
-// MARK: - Welcome
-struct TeamResponse: Codable {
-    var success: Int?
-    var result: [Team]?
-}
-
-// MARK: - Result
-struct Team: Codable {
-    var teamKey: Int?
-    var teamName, teamLogo: String?
-    
-
-    enum CodingKeys: String, CodingKey {
-        case teamKey = "team_key"
-        case teamName = "team_name"
-        case teamLogo = "team_logo"
-       
-    }
-}

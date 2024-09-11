@@ -13,7 +13,6 @@ protocol DetailsViewModelProtocol{
     func getEventdata(sportindex: Int, leagueId: Int)
     func getSportdetailsCount() -> Int
     func getEventsById(index: Int) -> Events
-    func getTeamlistCount() -> Int
     func getLatestdata(sportindex: Int, leagueId: Int)
     func getLatestaResultCount() -> Int
     func getLatestaResultById(index: Int) -> Latest
@@ -25,6 +24,7 @@ protocol DetailsViewModelProtocol{
    // func setSportIndex(sportIndex: Int)
     var bindAlertNWToViewController :(() -> ()) { get set }
     func setupNetworkMonitoring()
+    func getTeamKey(index: Int) -> Int
 }
 
 class DetailsViewModel : DetailsViewModelProtocol {
@@ -38,19 +38,16 @@ class DetailsViewModel : DetailsViewModelProtocol {
     var bindAlertNWToViewController :(() -> ()) = {}
     var eventdatalist : EventsResponse
     var latestresult : LatestResponse
-    var teamdatalist: TeamResponse
     var favState = false
     var isDataAppear = false
-    var sportIndex = 0
+
     
 
     init(){
         nwService = DetailsNWService()
         nwLatestService = LatestResultNWService()
-        nwTeamService = TeamsNWService()
         self.eventdatalist = EventsResponse(result: [])
         self.latestresult = LatestResponse(result: [])
-        self.teamdatalist = TeamResponse(result: [])
        }
     func getSportdetailsCount() -> Int{
         eventdatalist.result?.count ?? 0
@@ -66,15 +63,11 @@ class DetailsViewModel : DetailsViewModelProtocol {
       // print(eventdatalist.result?[index])
         return latestresult.result?[index] ?? Latest()
     }
-    //
-    func getTeamlistCount() -> Int{
-        teamdatalist.result?.count ?? 0
+    func getTeamKey(index: Int) -> Int {
+        eventdatalist.result?[index].homeTeamKey  ?? 0
     }
-//    func getTeamsdataById(index: Int) -> Team{
-//
-//        return teamdatalist.result?[index] ?? Team()
-//    }
-//
+    //
+    
     func setFavbtnimg(Id: Int) -> Bool{
         favState = CoreDataManager.checkFavCoreData(selectedId: Id)
       //  print(eventdatalist.result?.first?.leagueName ?? "fghjkl")
@@ -125,16 +118,7 @@ class DetailsViewModel : DetailsViewModelProtocol {
                 self?.bindResultToCollectionController()
                 
             }
-//            self?.nwTeamService?.getTeams(sportindex: sportindex, team_Key: "\(Comingdata? .result?.first?.homeTeamKey ?? 0)") { [weak self] Comingdata2 in
-//
-//                self?.teamdatalist = Comingdata2  ?? TeamResponse()
-//                print( self?.teamdatalist.result?.count ?? 0)
-//                print ( self?.teamdatalist.result)
-//                DispatchQueue.main.async {
-//
-//                    self?.bindResultToCollectionController()
-//                }
-//            }
+
         }
     }
     

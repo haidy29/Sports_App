@@ -46,11 +46,11 @@ class HomeViewModel: HomeViewModelProtocol{
                             DispatchQueue.main.async {
                                 if path.status == .satisfied {
                                     print("Internet is available")
-                                    self.networkAvilable = true
+                                   
                                     self.bindNavigationfromViewController?(index)
                                 } else {
                                     print("No internet connection")
-                                    self.networkAvilable = false
+                                 
                           self.bindAlertNWToViewController?()
                                 }
                                 monitor.cancel()

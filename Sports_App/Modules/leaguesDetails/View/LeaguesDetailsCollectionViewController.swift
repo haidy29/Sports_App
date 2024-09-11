@@ -37,7 +37,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
             self?.navigationItem.rightBarButtonItem?.isHidden = true
 
         }
-        
+
         detailsViewModel.bindResultToCollectionController = { [weak self] in
             
             self?.renderCollectionView()
@@ -180,13 +180,11 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 6
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         switch section {
         case 0, 2 ,4:
             return 1
@@ -252,12 +250,18 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if (indexPath.section == 5){
+            
+            let teamDetails = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsTableViewController") as! TeamDetailsTableViewController
+            teamDetails.sportIndex = sportIndex
+            teamDetails.teamKey = detailsViewModel.getTeamKey(index: indexPath.row)
+            self.navigationController?.present(teamDetails, animated: true)
+        }
+       
     }
     func  renderCollectionView(){
         collectionView.reloadData()
     }
-    
     @objc func favaction(_ sender: Any) {
         if detailsViewModel.getDataAppearState() {
             detailsViewModel.taponfavbtn()
@@ -267,6 +271,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
             print("Not responce")
         }
     }
+    
     
     func showNoInternetAlert() {
         let alert = UIAlertController(title: "No Internet Connection!!",
