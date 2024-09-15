@@ -48,7 +48,7 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
     }
     
     func getsportdata(sportindex: Int){
-        nwService?.getDataforfootball(sportindex: sportindex) { [weak self] Comingdata in
+        nwService?.getDataforLeagues(sportindex: sportindex) { [weak self] Comingdata in
             
             DispatchQueue.main.async {
                 

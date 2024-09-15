@@ -14,6 +14,10 @@ class TeamsNWService: TeamsNWServiceprotocol{
     private var teamlist: [Team] = []
 
     func getTeams(sportindex: Int, team_Key: String, handler: @escaping (TeamResponse?) -> Void){
+        guard sportindex >= 0 && sportindex < 4 else {
+            handler(nil)
+                   return
+               }
         var chosedUrl = " "
         if (sportindex == 0){
             chosedUrl = URLsTeam.Instance.footballTeams(team_Key: team_Key)

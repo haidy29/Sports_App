@@ -29,7 +29,7 @@ protocol DetailsViewModelProtocol{
 
 class DetailsViewModel : DetailsViewModelProtocol {
     
-    var nwService : DetailsNWServiceprotocol?
+    var nwEventsService : EventsNWServiceprotocol?
     var nwLatestService : LatestResultNWServiceprotocol?
     var nwTeamService : TeamsNWServiceprotocol?
    var bindResultToCollectionController :(() -> ()) = {}
@@ -44,7 +44,7 @@ class DetailsViewModel : DetailsViewModelProtocol {
     
 
     init(){
-        nwService = DetailsNWService()
+        nwEventsService = EventsNWService()
         nwLatestService = LatestResultNWService()
         self.eventdatalist = EventsResponse(result: [])
         self.latestresult = LatestResponse(result: [])
@@ -109,7 +109,7 @@ class DetailsViewModel : DetailsViewModelProtocol {
 //    }
     
     func getEventdata(sportindex: Int, leagueId: Int){
-        nwService?.getUpComingEvents(sportindex: sportindex, leagueId: "\(leagueId)") { [weak self] Comingdata in
+        nwEventsService?.getUpComingEvents(sportindex: sportindex, leagueId: "\(leagueId)") { [weak self] Comingdata in
             self?.eventdatalist = Comingdata  ?? EventsResponse()
             self?.setDataAppear(state: true)
            

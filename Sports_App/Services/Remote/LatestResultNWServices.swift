@@ -14,6 +14,10 @@ class LatestResultNWService: LatestResultNWServiceprotocol{
     private var latest: [Latest] = []
 
     func getLatestResult(sportindex: Int, leagueId: String, handler: @escaping (LatestResponse?) -> Void){
+        guard sportindex >= 0 && sportindex < 4 else {
+            handler(nil)
+                   return
+               }
         var chosedUrl = " "
         if (sportindex == 0){
             chosedUrl = URLsLatest.Instance.footballLatestResult(leagueId: leagueId)

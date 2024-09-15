@@ -3,11 +3,11 @@
 //  Sports_App
 //
 //  Created by Sohila Ahmed on 21/08/2024.
-//
+    //
 
 import Foundation
 protocol NWServiceprotocol{
-    func getDataforfootball(sportindex: Int, handler: @escaping (ApiResponse?) -> Void)
+     func getDataforLeagues(sportindex: Int, handler: @escaping (ApiResponse?) -> Void)
     
 }
 class NWService: NWServiceprotocol{
@@ -21,7 +21,11 @@ class NWService: NWServiceprotocol{
 
         ]
     
-    func getDataforfootball(sportindex: Int, handler: @escaping (ApiResponse?) -> Void){
+  func getDataforLeagues(sportindex: Int, handler: @escaping (ApiResponse?) -> Void){
+      guard sportindex >= 0 && sportindex < urls.count else {
+          handler(nil)
+                 return
+             }
         var chosedUrl = " "
         if (sportindex == 0){
             chosedUrl = urls[0]

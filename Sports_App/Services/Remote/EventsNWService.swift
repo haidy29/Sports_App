@@ -7,15 +7,19 @@
 
 
 import Foundation
-protocol DetailsNWServiceprotocol{
+protocol EventsNWServiceprotocol{
     func getUpComingEvents(sportindex: Int, leagueId: String, handler: @escaping (EventsResponse?) -> Void)
     
 }
-class DetailsNWService: DetailsNWServiceprotocol{
+class EventsNWService: EventsNWServiceprotocol{
     private var events: [Events] = []
 
     func getUpComingEvents(sportindex: Int, leagueId: String, handler: @escaping (EventsResponse?) -> Void){
         var chosedUrl = " "
+        guard sportindex >= 0 && sportindex < 4 else {
+            handler(nil)
+                   return
+               }
         if (sportindex == 0){
             chosedUrl = URLs.Instance.footballUpComingEvents(leagueId: leagueId)
            
