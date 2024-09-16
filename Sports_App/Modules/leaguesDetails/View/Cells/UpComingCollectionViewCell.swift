@@ -23,10 +23,10 @@ class UpComingCollectionViewCell: UICollectionViewCell {
         lblTime.text  = data?.eventTime ?? ""
         lblhometitle.text = data?.eventHomeTeam ?? ""
         lblawaytitle.text = data?.eventAwayTeam ?? ""
-        badge1.setImage(data?.homeTeamLogo ?? "", placeholder: "placeholder")
-        badge2.setImage(data?.awayTeamLogo ?? "", placeholder: "placeholder")
-        }
+        badge1.setImage(data?.homeTeamLogo ?? "", placeholder: " ")
+        badge2.setImage(data?.awayTeamLogo ?? "", placeholder: " ")
     }
+}
 
 extension UIImageView{
     func setImage(_ imageuurl: String,placeholder : String){

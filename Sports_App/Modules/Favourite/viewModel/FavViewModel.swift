@@ -18,7 +18,7 @@ protocol FavViewModelProtocol{
 class FavViewModel : FavViewModelProtocol{
     var favsList: [Events] = []
     var favState = false
-   
+    
     
     var legSelected: ((_ selectedIndex: Int)->()) =  { _ in }
     func getFavDataFromCpreData(){
@@ -33,10 +33,10 @@ class FavViewModel : FavViewModelProtocol{
         return favsList[index]
     }
     func getLeagueId(index: Int) -> Int {
-//        getFavDataFromCpreData()
+        //        getFavDataFromCpreData()
         print(favsList[index].leagueKey)
-       
-        return  favsList[index].leagueKey ?? 0  
+        
+        return  favsList[index].leagueKey ?? 0
     }
     
     func deletSportdetails(chosedindex: Int){

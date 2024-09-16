@@ -12,25 +12,25 @@ protocol TeamsNWServiceprotocol{
 }
 class TeamsNWService: TeamsNWServiceprotocol{
     private var teamlist: [Team] = []
-
+    
     func getTeams(sportindex: Int, team_Key: String, handler: @escaping (TeamResponse?) -> Void){
         guard sportindex >= 0 && sportindex < 4 else {
             handler(nil)
-                   return
-               }
+            return
+        }
         var chosedUrl = " "
         if (sportindex == 0){
             chosedUrl = URLsTeam.Instance.footballTeams(team_Key: team_Key)
-           print(chosedUrl)
+            print(chosedUrl)
         }
         else if (sportindex == 1){
-           
+            
         }
         else if (sportindex == 2){
-           
+            
         }
         else if (sportindex == 3){
-           
+            
         }
         let url = URL(string: chosedUrl)
         guard let url = url else{return}
@@ -67,8 +67,8 @@ class URLsTeam {
     
     private init() {}
     
-     
+    
     func footballTeams(team_Key: String) -> String {
-       return "https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=\(team_Key)&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
+        return "https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=\(team_Key)&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
     }
 }

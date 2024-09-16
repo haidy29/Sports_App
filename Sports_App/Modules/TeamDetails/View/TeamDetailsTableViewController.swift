@@ -20,10 +20,10 @@ class TeamDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         teamimg.layer.masksToBounds = false
-        //teamimg.layer.borderColor = UIColor.black.cgColor
+        teamimg.layer.borderColor = UIColor.black.cgColor
         teamimg.layer.cornerRadius = teamimg.frame.height / 2
         teamimg.clipsToBounds = true
-       
+        
         teamViewModel = TeamDetailsViewModel()
         
         teamViewModel.bindResultToViewController = { [weak self]  Teamdata in
@@ -55,25 +55,25 @@ class TeamDetailsTableViewController: UITableViewController {
         
         return 3
     }
- 
+    
     @IBAction func webaction(_ sender: Any) {
         
-//                    DispatchQueue.main.async {
-//                                    self.openwebsite()
-//                                }
-//                        }
-//                        func openwebsite() {
-//                             var str = lblTeamName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//                           //var str = "Serie A"
-//                                str = str.replacingOccurrences(of: " ", with: "")
-//                                print("\(str)")
-//                                UIApplication.shared.open(URL(string: ("https://www.\(str).com/en"))!, options: [:], completionHandler: nil)
-//                }
+        //                    DispatchQueue.main.async {
+        //                                    self.openwebsite()
+        //                                }
+        //                        }
+        //                        func openwebsite() {
+        //                             var str = lblTeamName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        //                           //var str = "Serie A"
+        //                                str = str.replacingOccurrences(of: " ", with: "")
+        //                                print("\(str)")
+        //                                UIApplication.shared.open(URL(string: ("https://www.\(str).com/en"))!, options: [:], completionHandler: nil)
+        //                }
         DispatchQueue.main.async {
-              self.openWebsite()
-          }
-      }
-
+            self.openWebsite()
+        }
+    }
+    
     func openWebsite() {
         guard let teamName = lblTeamName.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             print("Team name is empty or nil")
@@ -93,5 +93,5 @@ class TeamDetailsTableViewController: UITableViewController {
         
         
     }
-   
+    
 }

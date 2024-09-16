@@ -13,25 +13,25 @@ protocol EventsNWServiceprotocol{
 }
 class EventsNWService: EventsNWServiceprotocol{
     private var events: [Events] = []
-
+    
     func getUpComingEvents(sportindex: Int, leagueId: String, handler: @escaping (EventsResponse?) -> Void){
         var chosedUrl = " "
         guard sportindex >= 0 && sportindex < 4 else {
             handler(nil)
-                   return
-               }
+            return
+        }
         if (sportindex == 0){
             chosedUrl = URLs.Instance.footballUpComingEvents(leagueId: leagueId)
-           
+            
         }
         else if (sportindex == 1){
-           
+            
         }
         else if (sportindex == 2){
-           
+            
         }
         else if (sportindex == 3){
-           
+            
         }
         let url = URL(string: chosedUrl)
         guard let url = url else{return}
@@ -69,8 +69,8 @@ class URLs {
     private init() {}
     
     func footballUpComingEvents(leagueId: String) -> String {
-       return "https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=\(leagueId)&from=2023-01-18&to=2024-01-18&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
+        return "https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=\(leagueId)&from=2023-01-18&to=2024-01-18&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
     }
-     
+    
     
 }

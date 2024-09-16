@@ -29,15 +29,15 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
         super.viewDidLoad()
         
         detailsViewModel = DetailsViewModel()
-      // detailsViewModel.setSportIndex(sportIndex: sportIndex)
+        // detailsViewModel.setSportIndex(sportIndex: sportIndex)
         detailsViewModel.setupNetworkMonitoring()
         detailsViewModel.bindAlertNWToViewController = { [weak self] in
             self?.showNoInternetAlert()
             self?.collectionView.isHidden = true
             self?.navigationItem.rightBarButtonItem?.isHidden = true
-
+            
         }
-
+        
         detailsViewModel.bindResultToCollectionController = { [weak self] in
             
             self?.renderCollectionView()
@@ -230,7 +230,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
         case 3:
             
             lastestcell.cellSetup(data: detailsViewModel.getLatestaResultById(index: indexPath.row))
-
+            
             return lastestcell
             
         case 4:
@@ -238,7 +238,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
             return titleCell
         case 5:
             Teamscell.cellSetup(data: detailsViewModel.getEventsById(index: indexPath.row))
-           
+            
             return Teamscell
         default:
             return UICollectionViewCell()
@@ -255,7 +255,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
             teamDetails.teamKey = detailsViewModel.getTeamKey(index: indexPath.row)
             self.navigationController?.present(teamDetails, animated: true)
         }
-       
+        
     }
     func  renderCollectionView(){
         collectionView.reloadData()
@@ -280,7 +280,7 @@ class LeaguesDetailsCollectionViewController: UIViewController, UICollectionView
         
         self.present(alert, animated: true, completion: nil)
     }
-   
+    
 }
 extension UIColor {
     convenience init(hex: String) {

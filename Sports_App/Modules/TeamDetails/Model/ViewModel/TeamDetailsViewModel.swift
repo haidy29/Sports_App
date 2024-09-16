@@ -7,10 +7,10 @@
 
 import Foundation
 protocol TeamDetailsViewModelProtocol{
-  var bindResultToViewController: (([Team]) -> Void)
- { get set }
+    var bindResultToViewController: (([Team]) -> Void)
+    { get set }
     
-   // func getsportdata(sportindex: Int)
+    // func getsportdata(sportindex: Int)
     func getSportdetailsById(index: Int) -> Team
     func getSportdetailsCount() -> Int
     func deletSportdetails(chosedindex: Int)
@@ -21,7 +21,7 @@ protocol TeamDetailsViewModelProtocol{
 
 class TeamDetailsViewModel : TeamDetailsViewModelProtocol{
     
-   
+    
     var nwService : TeamsNWServiceprotocol?
     var bindResultToViewController: (([Team]) -> Void) = {_ in }
     var Teamslist : TeamResponse
@@ -48,15 +48,15 @@ class TeamDetailsViewModel : TeamDetailsViewModelProtocol{
     
     func getsTeamdata(sportindex: Int , teamKey :Int){
         self.nwService?.getTeams(sportindex: sportindex,team_Key: "\(teamKey)") { [weak self] Comingdata in
-        
-                        self?.Teamslist = Comingdata  ?? TeamResponse()
-                     
-                        DispatchQueue.main.async {
-        
-                            self?.bindResultToViewController(Comingdata?.result ?? [Team()])
-                        }
-                    }
+            
+            self?.Teamslist = Comingdata  ?? TeamResponse()
+            
+            DispatchQueue.main.async {
+                
+                self?.bindResultToViewController(Comingdata?.result ?? [Team()])
+            }
+        }
     }
-  
-   
+    
+    
 }

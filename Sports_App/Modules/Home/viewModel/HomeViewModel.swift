@@ -13,8 +13,8 @@ protocol HomeViewModelProtocol{
     var bindAlertNWToViewController :(() -> ())? { get set }
     func setupNetworkMonitoring(index: Int)
     var bindNavigationfromViewController: ((_ index: Int) -> ())? { get set }
-      var legSelected: ((_ selectedIndex: Int)->())? { get set }
-  
+    var legSelected: ((_ selectedIndex: Int)->())? { get set }
+    
 }
 
 
@@ -24,8 +24,8 @@ class HomeViewModel: HomeViewModelProtocol{
     private var monitor : NWPathMonitor?
     var bindAlertNWToViewController :(() -> ())?
     var bindNavigationfromViewController: ((_ index: Int) -> ())?
-     var legSelected: ((_ selectedIndex: Int)->())?
-   
+    var legSelected: ((_ selectedIndex: Int)->())?
+    
     
     func getSportsCount() -> Int{
         sportsList.count
@@ -38,26 +38,26 @@ class HomeViewModel: HomeViewModelProtocol{
     
     
     func setupNetworkMonitoring(index: Int) {
-
+        
         let monitor = NWPathMonitor()
-                        let queue = DispatchQueue.global(qos: .background)
+        let queue = DispatchQueue.global(qos: .background)
         
-                        monitor.pathUpdateHandler = { path in
-                            DispatchQueue.main.async {
-                                if path.status == .satisfied {
-                                    print("Internet is available")
-                                   
-                                    self.bindNavigationfromViewController?(index)
-                                } else {
-                                    print("No internet connection")
-                                 
-                          self.bindAlertNWToViewController?()
-                                }
-                                monitor.cancel()
-                            }
-                        }
-                        monitor.start(queue: queue)
-   }
-        
-        
+        monitor.pathUpdateHandler = { path in
+            DispatchQueue.main.async {
+                if path.status == .satisfied {
+                    print("Internet is available")
+                    
+                    self.bindNavigationfromViewController?(index)
+                } else {
+                    print("No internet connection")
+                    
+                    self.bindAlertNWToViewController?()
+                }
+                monitor.cancel()
+            }
+        }
+        monitor.start(queue: queue)
+    }
+    
+    
 }

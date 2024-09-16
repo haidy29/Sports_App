@@ -31,11 +31,11 @@ class LatestCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         
-            self.layer.cornerRadius = self.bounds.size.height / 4
+        self.layer.cornerRadius = self.bounds.size.height / 4
         self.layer.masksToBounds = false
         self.layer.borderWidth = 0.1
         self.layer.borderColor =  UIColor.gray.cgColor
-     
+        
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
     }
     
@@ -47,7 +47,7 @@ class LatestCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.3
         
         self.layer.masksToBounds = false
-       
+        
     }
     func cellSetup(data: Latest?){
         lbldate.text  = data?.eventDate ?? ""
@@ -57,10 +57,10 @@ class LatestCollectionViewCell: UICollectionViewCell {
         lblResult.text = data?.eventFinalResult ?? ""
         homebadge.setImage(data?.homeTeamLogo ?? "", placeholder: "default")
         awaybadge.setImage(data?.awayTeamLogo ?? "", placeholder: "default")
-        }
-   
-
-
-       
-   
+    }
+    
+    
+    
+    
+    
 }

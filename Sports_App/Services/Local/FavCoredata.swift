@@ -54,7 +54,7 @@ class CoreDataManager {
             guard let favsItems = favs else{return []}
             
             for item in favsItems {
-                       // Use optional binding to safely unwrap values
+                // Use optional binding to safely unwrap values
                 let name = item.value(forKey: "leagueName")
                 let logo = item.value(forKey: "leagueLogo")
                 let key = item.value(forKey: "leagueKey")
@@ -62,9 +62,9 @@ class CoreDataManager {
                 
                 let product = Events(leagueName: name as? String,
                                      leagueKey: key as? Int, leagueLogo: logo as? String)
-                           arrayOfEvents.append(product)
-                       
-                   }
+                arrayOfEvents.append(product)
+                
+            }
             
         }catch let error {
             print(error.localizedDescription)
@@ -99,7 +99,7 @@ class CoreDataManager {
             print(error.localizedDescription)
         }
     }
-   
+    
     static func checkFavCoreData( selectedId :Int) -> Bool{
         
         appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -126,5 +126,5 @@ class CoreDataManager {
             return false
         }
     }
-  
+    
 }

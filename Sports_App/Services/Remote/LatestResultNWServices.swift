@@ -12,25 +12,25 @@ protocol LatestResultNWServiceprotocol{
 }
 class LatestResultNWService: LatestResultNWServiceprotocol{
     private var latest: [Latest] = []
-
+    
     func getLatestResult(sportindex: Int, leagueId: String, handler: @escaping (LatestResponse?) -> Void){
         guard sportindex >= 0 && sportindex < 4 else {
             handler(nil)
-                   return
-               }
+            return
+        }
         var chosedUrl = " "
         if (sportindex == 0){
             chosedUrl = URLsLatest.Instance.footballLatestResult(leagueId: leagueId)
-           
+            
         }
         else if (sportindex == 1){
-           
+            
         }
         else if (sportindex == 2){
-           
+            
         }
         else if (sportindex == 3){
-           
+            
         }
         let url = URL(string: chosedUrl)
         guard let url = url else{return}
@@ -67,8 +67,8 @@ class URLsLatest {
     
     private init() {}
     
-     
+    
     func footballLatestResult(leagueId: String) -> String {
-       return "https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=\(leagueId)&from=2023-7-18&to=2023-09-18&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
+        return "https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=\(leagueId)&from=2023-7-18&to=2023-09-18&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
     }
 }

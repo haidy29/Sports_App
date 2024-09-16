@@ -54,6 +54,8 @@
 		C3E0E9CB2C7746D9001190E1 /* LeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0E9CA2C7746D9001190E1 /* LeaguesViewController.swift */; };
 		C3E0E9CE2C77716A001190E1 /* LeaguesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0E9CD2C77716A001190E1 /* LeaguesViewModel.swift */; };
 		C3E0E9D02C777B1E001190E1 /* leaguesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E0E9CF2C777B1E001190E1 /* leaguesTableViewCell.swift */; };
+		C3F613D32C985CD6005B2384 /* start-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C3F613D22C985CD6005B2384 /* start-animation.json */; };
+		C3F613D92C98C51B005B2384 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F613D82C98C51B005B2384 /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		C3E0E9CA2C7746D9001190E1 /* LeaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesViewController.swift; sourceTree = "<group>"; };
 		C3E0E9CD2C77716A001190E1 /* LeaguesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesViewModel.swift; sourceTree = "<group>"; };
 		C3E0E9CF2C777B1E001190E1 /* leaguesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaguesTableViewCell.swift; sourceTree = "<group>"; };
+		C3F613D22C985CD6005B2384 /* start-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "start-animation.json"; sourceTree = "<group>"; };
+		C3F613D82C98C51B005B2384 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D8FC29EF02C41D6BD34688A3 /* Pods-Sports_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports_App.release.xcconfig"; path = "Target Support Files/Pods-Sports_App/Pods-Sports_App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,7 +257,6 @@
 		C3567BA82C74DD7D009C54C5 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				C35799FC2C74747E00D7BE3E /* TabBarViewController.swift */,
 				C3E0E9B02C762702001190E1 /* HomeSports.swift */,
 				C3E0E9B72C763029001190E1 /* HomeCell.swift */,
 			);
@@ -312,6 +315,7 @@
 				C3E0E9B92C7688E5001190E1 /* Services */,
 				C3567BA42C74DCAF009C54C5 /* View */,
 				C3567BA52C74DD0F009C54C5 /* Modules */,
+				C3F613D62C98C409005B2384 /* SplashScreen */,
 				C386EB932C971646004458DB /* Core */,
 				C3579A062C74748000D7BE3E /* Info.plist */,
 			);
@@ -502,6 +506,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C3F613D62C98C409005B2384 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C3F613D72C98C46D005B2384 /* View */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		C3F613D72C98C46D005B2384 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3F613D82C98C51B005B2384 /* SplashViewController.swift */,
+				C35799FC2C74747E00D7BE3E /* TabBarViewController.swift */,
+				C3F613D22C985CD6005B2384 /* start-animation.json */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,6 +607,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F613D32C985CD6005B2384 /* start-animation.json in Resources */,
 				C3579A052C74748000D7BE3E /* LaunchScreen.storyboard in Resources */,
 				C3579A022C74748000D7BE3E /* Assets.xcassets in Resources */,
 				C3579A002C74747E00D7BE3E /* Main.storyboard in Resources */,
@@ -678,6 +701,7 @@
 				C3E0E9CE2C77716A001190E1 /* LeaguesViewModel.swift in Sources */,
 				C318E2AC2C85BE4500308BE3 /* FavouritesTableViewCell.swift in Sources */,
 				C313AAE32C7F2A8B00E2A49A /* UpComingCollectionViewCell.swift in Sources */,
+				C3F613D92C98C51B005B2384 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

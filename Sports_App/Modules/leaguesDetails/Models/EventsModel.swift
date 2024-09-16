@@ -31,8 +31,8 @@ struct Events: Codable {
     var leagueSeason: String?
     var eventLive, eventStadium, eventReferee: String?
     var homeTeamLogo, awayTeamLogo , leagueLogo: String?
-   // var sportsIndex: Int?
-
+    // var sportsIndex: Int?
+    
     enum CodingKeys: String, CodingKey {
         case eventKey = "event_key"
         case eventDate = "event_date"
@@ -57,8 +57,8 @@ struct Events: Codable {
         case homeTeamLogo = "home_team_logo"
         case awayTeamLogo = "away_team_logo"
         case leagueLogo = "league_logo"
-       // case sportsIndex
-
+        // case sportsIndex
+        
     }
 }
 struct LatestResponse: Codable {
@@ -86,8 +86,8 @@ struct Latest: Codable {
     var stageName: String?
     var leagueGroup: String?
     var goalscorers: [Goalscorer]?
-   
-
+    
+    
     enum CodingKeys: String, CodingKey {
         case eventKey = "event_key"
         case eventDate = "event_date"
@@ -129,7 +129,7 @@ struct Goalscorer: Codable {
     var homeAssistID, score, awayScorer, awayScorerID: String?
     var awayAssist: String?
     var awayAssistID, info, infoTime: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case time
         case homeScorer = "home_scorer"

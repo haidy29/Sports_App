@@ -3,29 +3,29 @@
 //  Sports_App
 //
 //  Created by Sohila Ahmed on 21/08/2024.
-    //
+//
 
 import Foundation
 protocol NWServiceprotocol{
-     func getDataforLeagues(sportindex: Int, handler: @escaping (ApiResponse?) -> Void)
+    func getDataforLeagues(sportindex: Int, handler: @escaping (ApiResponse?) -> Void)
     
 }
 class NWService: NWServiceprotocol{
     private var leagues: [League] = []
     let urls = [
-            "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
-            "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
-            "https://apiv2.allsportsapi.com/tennis/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
-
-            "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
-
-        ]
+        "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
+        "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
+        "https://apiv2.allsportsapi.com/tennis/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450",
+        
+        "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=27afc3fa3fdd4f795e59cfb9eef02fce7700a7aae720ff76a7f65b97cd206450"
+        
+    ]
     
-  func getDataforLeagues(sportindex: Int, handler: @escaping (ApiResponse?) -> Void){
-      guard sportindex >= 0 && sportindex < urls.count else {
-          handler(nil)
-                 return
-             }
+    func getDataforLeagues(sportindex: Int, handler: @escaping (ApiResponse?) -> Void){
+        guard sportindex >= 0 && sportindex < urls.count else {
+            handler(nil)
+            return
+        }
         var chosedUrl = " "
         if (sportindex == 0){
             chosedUrl = urls[0]

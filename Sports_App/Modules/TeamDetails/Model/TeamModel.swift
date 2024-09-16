@@ -21,7 +21,7 @@ struct Team: Codable {
     var teamLogo: String?
     var players: [Player]?
     var coaches: [Coach]?
-
+    
     enum CodingKeys: String, CodingKey {
         case teamKey = "team_key"
         case teamName = "team_name"
@@ -35,7 +35,7 @@ struct Team: Codable {
 struct Coach: Codable {
     var coachName: String?
     var coachCountry, coachAge: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case coachName = "coach_name"
         case coachCountry = "coach_country"
@@ -56,7 +56,7 @@ struct Player: Codable {
     var playerDuelsWon, playerDribbleAttempts, playerDribbleSucc, playerPenComm: String?
     var playerPenWon, playerPenScored, playerPenMissed, playerPasses: String?
     var playerPassesAccuracy, playerKeyPasses, playerWoordworks, playerRating: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case playerKey = "player_key"
         case playerImage = "player_image"

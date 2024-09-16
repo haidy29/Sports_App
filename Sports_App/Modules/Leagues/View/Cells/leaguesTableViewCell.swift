@@ -8,7 +8,7 @@
 import UIKit
 
 class leaguesTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var badge: UIImageView!
     @IBOutlet weak var lbltitle: UILabel!
     
@@ -16,11 +16,11 @@ class leaguesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         //badge.layer.borderWidth = 1
         badge.layer.masksToBounds = false
-           //badge.layer.borderColor = UIColor.black.cgColor
+        //badge.layer.borderColor = UIColor.black.cgColor
         badge.layer.cornerRadius = badge.frame.height / 2
         badge.clipsToBounds = true
         setupCellAppearance() 
-
+        
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -38,29 +38,29 @@ class leaguesTableViewCell: UITableViewCell {
         self.layer.shadowRadius = 4
         self.layer.shadowOpacity = 0.3
         self.layer.masksToBounds = false
-       
+        
     }
-
-   
+    
+    
     @IBAction func btnvideo(_ sender: Any) {
         DispatchQueue.main.async {
-                        self.openYouTube()
-                    }
-            }
-            func openYouTube() {
-                 var str = lbltitle.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-               //var str = "Serie A"
-                    str = str.replacingOccurrences(of: " ", with: "")
-                    print("\(str)")
-                    UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(str)"))!, options: [:], completionHandler: nil)
+            self.openYouTube()
+        }
     }
-
-   func setupleaguesCell(data: League){
-       lbltitle.text = data.leagueName
-      badge.setImage(data.leagueLogo ?? "", placeholder: "default")
-        
-        
-          }
-       }
+    func openYouTube() {
+        var str = lbltitle.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        //var str = "Serie A"
+        str = str.replacingOccurrences(of: " ", with: "")
+        print("\(str)")
+        UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(str)"))!, options: [:], completionHandler: nil)
+    }
     
+    func setupleaguesCell(data: League){
+        lbltitle.text = data.leagueName
+        badge.setImage(data.leagueLogo ?? "", placeholder: "default")
+        
+        
+    }
+}
+
 

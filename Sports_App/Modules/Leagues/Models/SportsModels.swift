@@ -8,9 +8,9 @@
 import Foundation
 struct ApiResponse: Codable {
     
-        var success: Int?
-        var result: [League]
-    }
+    var success: Int?
+    var result: [League]
+}
 
 struct League: Codable {
     var leagueKey: Int?
@@ -19,7 +19,7 @@ struct League: Codable {
     var countryName: String?
     var leagueLogo: String?
     var countryLogo: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case leagueKey = "league_key"
         case leagueName = "league_name"

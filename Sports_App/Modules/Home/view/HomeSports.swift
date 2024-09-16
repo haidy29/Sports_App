@@ -10,16 +10,16 @@ import Network
 class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var CollectioView: UICollectionView!
-        
+    
     var viewModel : HomeViewModelProtocol!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title =  "Sports"
         viewModel = HomeViewModel()
         
         
-
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -34,39 +34,39 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sportcell", for: indexPath) as! HomeCell
         cell.setupCell(data: viewModel.getSportById(index: indexPath.row))
-      
+        
         return cell
-
+        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
-       // LeaguesScreen.selectedIndex = indexPath.row
-// self.navigationController?.pushViewController(LeaguesScreen, animated: true)
-//        viewModel.setupNetworkMonitoring(index: indexPath.row)
+        // let LeaguesScreen = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
+        // LeaguesScreen.selectedIndex = indexPath.row
+        // self.navigationController?.pushViewController(LeaguesScreen, animated: true)
+        //        viewModel.setupNetworkMonitoring(index: indexPath.row)
         viewModel.setupNetworkMonitoring(index: indexPath.row)
-
+        
         viewModel.bindAlertNWToViewController = { [weak self] in
-                    self?.showNoInternetAlert()
+            self?.showNoInternetAlert()
             
-                   // self?.CollectioView.isHidden = true
-        
-                }
-                viewModel.bindNavigationfromViewController = { [weak self] index in
-                    self?.viewModel.legSelected?(index)
-        
-                        }
+            // self?.CollectioView.isHidden = true
+            
+        }
+        viewModel.bindNavigationfromViewController = { [weak self] index in
+            self?.viewModel.legSelected?(index)
+            
+        }
     }
-
     
-
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
+    
+    
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 1    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 2
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: (collectionView.frame.width / 2) - 15 ,
@@ -76,7 +76,7 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 50, left: 10, bottom: 20, right: 10)
     }
-   func showNoInternetAlert() {
+    func showNoInternetAlert() {
         let alert = UIAlertController(title: "No Internet Connection!!",
                                       message: "Please check your internet connection and try again.",
                                       preferredStyle: .alert)
@@ -85,6 +85,6 @@ class HomeSports: UIViewController ,UICollectionViewDelegate ,UICollectionViewDa
         
         self.present(alert, animated: true, completion: nil)
     }
-   
+    
     
 }

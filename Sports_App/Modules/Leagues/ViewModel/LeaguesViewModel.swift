@@ -15,14 +15,14 @@ protocol LeaguesViewModelProtocol{
     func getSportdetailsCount() -> Int
     func deletSportdetails(chosedindex: Int)
     func getLeagueId(index: Int) -> Int
-   
-
+    
+    
 }
 
 
 class LeaguesViewModel : LeaguesViewModelProtocol{
     
-   
+    
     var nwService : NWServiceprotocol?
     var bindResultToViewController :(() -> ()) = {}
     var sportdatalist : ApiResponse
@@ -58,6 +58,6 @@ class LeaguesViewModel : LeaguesViewModelProtocol{
             }
         }
     }
-  
-   
+    
+    
 }
