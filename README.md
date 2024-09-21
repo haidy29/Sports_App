@@ -8,15 +8,17 @@
 - List of your saved favourite teams.
 
 # Preview
-[Uploading WhatsApp Video 2024-09-21 at 2.39.32 AM.mp4.zip…]()
 
 
 # Technologies Used:
 - Swift
+- Architecture: MVVM Pattern
+- SOLID Principles for maintainable and scalable code
 - Fetching data from API
 - Threads
 - CoreData
-- CocoaPods (Alamofire, Kingfisher, Reachability, lottie)
-- UIKit & Constraints.
-- Unit testing for Network Service files.
+- CocoaPods(Kingfisher, lottie)
+- NetWork framework(NWPathMonitor)
+- UIKit & Constraints
+- Unit testing for Network Service files
 - Version control (GitHub)
